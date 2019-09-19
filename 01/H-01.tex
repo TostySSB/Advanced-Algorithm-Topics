@@ -1,0 +1,168 @@
+\documentclass{article}
+\usepackage{../fasy-hw}
+\usepackage{ wasysym }
+\usepackage{ amsthm }
+%% UPDATE these variables:
+\renewcommand{\hwnum}{1}
+\author{Troy Daneel Oster}
+\collab{Dana Parker}
+\date{due: 6 September 2019}
+
+\begin{document}
+
+\nextprob
+\begin{enumerate}
+    \item Write this homework in LaTex.  (You can use this document as a
+        starting point!)
+    \item Update your photo on D2L to be a recognizable headshot of you.
+    
+    Done!
+
+\end{enumerate}
+\nextprob
+Consider the third function defined in EPI, Section 13.1 (Compute the
+Intersection of Two Sorted Arrays).
+\begin{enumerate}
+    \item When we design an algorithm, we design the algorithm to solve a
+        problem or answer a question.  What is the problem that this algorithm
+        solves?
+
+        This while loop solves the problem of finding the intersection of two arrays $A,B$. That is to say,
+        that a new array "intersection\_A\_B" is created and contains the elements present in both array $A$ and array $B$
+    
+    \item Prove that the while loop terminates using a decrementing function.
+    
+    \begin{proof}
+        Let there be a decrementing function $D(x)$ such that $x$ equals a possible state of the while loop.
+        Let $x=(len(A)+len(B)) - (i+j)$
+        
+        \vspace{0.5cm}
+
+        \textbf{Note:} the function $D(x)$ is a valid decrementing function for this while loop because it includes
+        the conditions for termination present within the while loop, $i<len(A)$ and $j<len(B)$. therefore, if $i,j$ increment,
+        the function $D(x)$ decrements. If $x$ reaches $0$ it must mean that either $i$ or $j$ or both have increased to a point where they are greater than $len(A)$ or $len(B)$.
+
+        Now, we must show that either $i$ or $j$, or both, increment during each iteration of the loop.
+
+        If we look at the while loop. We notice that there are 3 cases that can occur. An "if", an "elif", and an "else".
+
+        \vspace{0.5cm}
+
+        \textbf{Case 1:} If the "if" statement is triggered, $i=i+1$ ($i$ increments) and $j = j+1$ ($j$ increments).
+
+        \textbf{Case 2:} If the "elif" statement is triggered, $i = i+1$ ($i$ increments)
+
+        \textbf{Case 3:} If the "else" statement is triggered, $j=j+1$ ($j$ increments)
+
+        \vspace{0.5cm}
+
+        Therefore, since all possible cases within the while loop increment either $i$ or $j$ or both, the decrementing function must reach 0. Thus, the while loop must terminate.
+    \end{proof}
+\end{enumerate}
+
+\nextprob
+Prove the following statement: Every tree with one or more nodes/vertices has
+exactly $n-1$ edges.
+\begin{proof}
+    Let $n$ be the number of vertices in a tree (T).
+
+    \leftskip 1cm 
+    
+    \textbf{Base Case:} If n = 1, then the number of edges is 0, because there are no other nodes to connect to.
+    
+    \textbf{Assume:} Assume that n=k holds: A tree with k nodes has k - 1 edges.
+    
+    \textbf{Show:} We must show that n = k+1 holds: A tree k+1 nodes has k edges
+
+    Now, let $V_1$ and $V_2$ be vertices of a tree ($M$) that has $k$ and let $E$ be the edge connecting them. Since M is a tree,
+    then there must be only one path, or edge, connecting vertices $V_1, V_2$. Thus, if edge $E$ is deleted,
+    there are now two independent trees containing the vertices $V_1, V_2$ respectively. Let these two trees be $G_1, G_2$ respectively.
+    It can be assumed that $G_1, G_2$ have no cycle, since $M$ had no cycles.
+
+    Let $k_1$ and $k_2$ be the number of vertices in $G_1, G_2$ respectively such that $k_1+k_2=n$. therefore, because of the properties of addition
+    $k_1 < k$ and $k_2 < k$ Thus, based on the inductive hypothesis, $G_1,G_2$ must have $k_1-1$ and $k_2 - 1$ nodes respectively.
+    
+    therefore, the number of edges in $M= k$
+    \begin{align*}
+        &=(k_1-1)+(k_2 - 1) + 1 \\
+        &=k_1+k_2 - 1 &&\text{  $k_1+k_2 = k$ by substitution} \\
+        &=k-1
+    \end{align*}
+\end{proof}
+
+\nextprob
+Consider the following statement: If $a$ and $b$ are both odd numbers, then $ab$ is
+an odd number.
+\begin{enumerate}
+    \item What is the definition of an odd number?
+    
+    An odd number can be defined as k = 2n + 1 where $n \in \mathbb{Z}$
+
+    \item What is the definition of an even number?
+    
+    An even number can be defined as k = 2n where $n \in \mathbb{Z}$
+
+    \item What is the contrapositive of this statement?
+    
+    The contrapositive of this statement is, if $ab$ is an even number, then $a$ and $b$ are not both odd.
+
+    \item Prove this statement, using the contrapositive.
+    
+    
+
+    
+    \begin{proof} Notice that there are 3 possible cases for this statement
+        
+        \vspace{0.5cm}
+        
+        \leftskip 1cm
+        \textbf{Case 1:} $a,b$ are both even, where $a,b \in \mathbb{Z}$
+        
+        \begin{align*}
+            \text{Let } a &= 2n &&\text{by definition of an even integer} \\
+             b &= 2m &&\text{by definition of an even integer} \\
+             \\
+             ab &= (2n)(2m) \\
+             &= 2(mn) &&\text{Let $k = mn$, where $k$ is an integer by the multiplicative properties of integers} \\
+             &=2k
+        \end{align*}
+
+        $ab$ can be written in the form $2k$ where $k$ is an integer. Therefore, by the definition of an even integer, $ab$ is even. Thus, the statement, if $ab$ is an even number, then $a$ and $b$ are not both odd, is true for this case.
+        \vspace{0.5cm}
+
+        \textbf{Case 2:} $a$ or $b$ is even, but not both. where $a,b \in \mathbb{Z}$
+
+        \begin{align*}
+            \text{Let } a &= 2n &&\text{by definition of an even integer} \\
+             b &= 2m + 1 &&\text{by definition of an odd integer} \\
+             \\
+             ab &= (2n)(2m+1) \\
+             &= 4(mn)+2n \\
+             &= 2(2mn + n) &&\text{Let $k = 2mn+n$, where $k$ is an integer by the multiplicative and additive properties of integers} \\
+             &=2k
+        \end{align*}
+
+        $ab$ can be written in the form $2k$ where $k$ is an integer. $a,b$ are arbitrary integers, so this proof is valid for the case where $a$ is odd and $b$ is even, and the case where $a$ is even and $b$ is odd. Therefore, by the definition of an even integer, $ab$ is even. Thus, the statement, if $ab$ is an even number, then $a$ and $b$ are not both odd, is true for this case.
+        \vspace{0.5cm}
+
+        \textbf{Case 3:} $a,b$ are both odd
+
+        \begin{align*}
+            \text{Let } a &= 2n + 1 &&\text{by definition of an odd integer} \\
+             b &= 2m + 1 &&\text{by definition of an odd integer} \\
+             \\
+             ab &= (2n + 1)(2m+1) \\
+             &= 4mn + 2n + 2m + 1 \\
+             &= 2(2mn + n + m) + 1 &&\text{Let $k = 2mn+n+m$, where $k$ is an integer by the multiplicative and additive properties of integers} \\
+             &=2k + 1
+        \end{align*}
+        
+        $ab$ can be written in the form $2k + 1$ where $k$ is an integer. Therefore, by the definition of an odd integer, $ab$ is odd. Thus, the statement, if $ab$ is an even number, then $a$ and $b$ are not both odd, is false for this case.
+
+        Having shown that for every case, except where $a$ and $b$ are both odd, that $ab$ is even, we have shown that the contrapositive is true. Therefore, by proof by contraposition, the original statement, if $a$ and $b$ are both odd numbers, then $ab$ is an odd number, is true.
+
+    \end{proof}
+    
+\end{enumerate}
+
+\end{document}
